@@ -1,0 +1,27 @@
+h1
+{
+    font-weight: bold;
+    border-bottom: 1px solid white;
+}
+
+body
+{
+    color: white;
+    background-color: rgb(24, 48, 57);
+}
+
+a:link 
+{
+    color: rgb(182, 240, 255);
+}
+  
+a:visited 
+{
+    color: rgb(0, 132, 132);
+}
+
+blockquote
+{ 
+    background-color: rgb(59, 68, 71);
+    padding: 1rem;
+}
