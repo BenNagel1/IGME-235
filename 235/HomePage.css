@@ -19,6 +19,8 @@ hr {
 }
 .list {
     font-weight: bold;
+    font-style: none;
+    margin-left: 0;
 }
 .links {
     font-style: italic;
@@ -26,6 +28,12 @@ hr {
 }
 #heading {
     border-bottom: 4px solid rgb(0, 43, 63);
+}
+#face {
+    border: 4px dashed rgb(0, 43, 63);
+}
+p {
+    margin-right: 50vw;
 }
 
 a:link 
