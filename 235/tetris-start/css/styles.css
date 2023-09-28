@@ -6,15 +6,49 @@ h2, h3, h4, h5, h6
 }
 figure
 {
-    width: 40%;
+    max-width: 650px;
     float: right;
-    margin-left: 10vw;
+    margin-left: auto;
+    margin-right: auto;
 }
 figure img
 {
-    width: 60%;
+    width: 100%;
+}
+#tetlist
+{
+    display: flex;
+    flex-flow: row wrap;
+    float: left;
 }
 #tetlist img
 {
-    width:20%
+    max-width: 60%;
+}
+.tet
+{
+    flex: 1 0 450px;
+    text-align: center;
+}
+span
+{
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: large;
+    font-weight: bold;
+}
+.aliases
+{
+    margin: 1rem;
+    text-align: center;
+}
+footer
+{
+    position: relative;
+    clear: both;
+}
+header, main, footer
+{
+    width: 90vw;
 }
