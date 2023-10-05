@@ -52,6 +52,16 @@ Grid Formatting
                         "footer";
 }
 
+@media screen and (min-width: 760px){
+    #wrapper {
+        grid-template-rows: 1fr 10fr 1fr;
+        grid-template-columns: 20% auto 20%;
+        grid-template-areas: "header header header" 
+                            "navbar content sidebar" 
+                            "footer footer footer";
+    }
+}
+
 header {
     grid-area: header;
 }
