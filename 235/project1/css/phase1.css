@@ -1,0 +1,166 @@
+body {
+    margin: 1rem;
+}
+
+#wrapper {
+    display: grid;
+    grid-template-areas:
+        "banner banner"
+        "header header"
+        "headline headline"
+        "main sidebar"
+        "image_end image_end"
+        "footer footer";
+    grid-template-columns: 800px 150px;
+    grid-template-rows: 0px 480px 200px 320px 450px;
+}
+
+header, #headlines {
+    grid-area: header;
+    font-family: "Arial", sans-serif;
+}
+
+#heading{
+    display: inline-block;
+    font-weight: 900;
+    font-size: 75px;
+    color: white;
+    background-color: #F76902;
+    padding: 10px;
+    width: 300px;
+    height: 73px;
+    margin-top: 0px;
+}
+
+#subheading{
+    display: inline-block;
+    font-weight: 100;
+    font-size: 20px;
+    color: white;
+    background-color: black;
+    padding: 1px;
+    margin-top: 20px;
+    position: absolute;
+    margin-top: 93px;
+    margin-left: -150px;
+    z-index: -1;
+}
+
+#headline-top {
+    display: inline-block;
+    font-weight: 900;
+    font-size: 55px;
+    color: white;
+    margin-left: 2rem;
+    position: relative;
+    bottom: 10px;
+}
+
+#headline-bottom {
+    display: inline-block;
+    font-weight: 900;
+    font-size: 55px;
+    color: #F76902;
+    margin-left: 2rem;
+    position: relative;
+    bottom: 135px;
+}
+
+#football {
+    grid-area: banner;
+    z-index: -5;
+    width: 1200px; height: 600px; object-fit: cover;
+}
+
+#headlines {
+    grid-area: headline;
+}
+
+main {
+    font-family: "Georgia", serif;
+    grid-area: main;
+    margin-right: 2rem;
+    columns: 3;
+    margin-left: 2rem;
+}
+
+main::first-letter {
+    font-size: 350%;
+    line-height: 1;
+    float: left;
+    padding-right: .5rem;
+}
+
+#reference {
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    padding-top: 5px;
+    border-top: 2px solid black;
+}
+
+#sidebar {
+    grid-area: sidebar;
+    font-family: "Arial", sans-serif;
+}
+
+#box-top {
+    background-color: #F76902;
+    color:white;
+    padding: 20px;
+    position: relative;
+    bottom: 75px;
+    width: 125px;
+    height: 125px;
+}
+
+#box-top::before {
+    content: "";
+    position: absolute;
+    top: 82px;
+    left: 33px;
+    width: 200%;
+    height: 141%;
+    z-index: -11;
+    rotate: 45deg;
+    background: #F76902;
+  }
+
+#box-bottom {
+    background-color: #D0D3D4;
+    color:black;
+    padding: 20px;
+    position: relative;
+    bottom: 75px;
+    width: 125px;
+    height: 125px;
+}
+
+#box-bottom::before {
+  content: "";
+  position: absolute;
+  top: 82px;
+  left: 33px;
+  width: 200%;
+  height: 141%;
+  z-index: -10;
+  rotate: 45deg;
+  background: #D0D3D4;
+}
+
+#athletics {
+    grid-area: image_end;
+    width: 1200px; height: 500px; object-fit: cover;
+    z-index: -5;
+}
+
+footer {
+    font-family: "Arial", sans-serif;
+    font-weight: 600;
+    grid-area: footer;
+    margin-left: 4rem;
+}
+
+#chapter {
+    margin-left: 2rem;
+}
+
