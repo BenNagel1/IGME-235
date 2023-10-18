@@ -51,12 +51,13 @@ table {
 
 body {
     display: grid;
-    grid-template-areas: "nav" "header";
-    grid-template-rows: 80px 500px;
+    grid-template-areas: "nav" "header" "about" "skills" "projects" "contact";
+    grid-template-rows: 80px 450px 400px;
     color: white;
 }
 
 nav {
+    grid-area: nav;
     display: grid;
     grid-template-areas: "name navigation";
     grid-template-columns: 1fr 2fr;
@@ -64,13 +65,16 @@ nav {
     font-weight: 500;
     background-color: #02353C;
     height: 80px;
-    border: 5px solid black;
+    /*border: 5px solid black;*/
+    position: fixed;
+    width: 100vw;
+    z-index: 100;
 }
 h3 {
     grid-area: name;
     font-size: 40px;
-    margin-left: 10px;
-    border: 5px solid white;
+    margin-left: 20px;
+    /*border: 5px solid white;*/
     display: flex;
     align-items: center;
 }
@@ -80,13 +84,15 @@ h4 {
     justify-content: space-between;
     grid-area: navigation;
     font-size: 30px;
-    margin-left: 5vw;
+    margin-left: 15vw;
     margin-right: 5vw;
-    border: 5px solid white;
+    column-gap: 15px;
+    /*border: 5px solid white;*/
     align-items: center;
 }
 
 header {
+    grid-area: header;
     font-family: 'Palanquin Dark', sans-serif;
     background-color: #035762;
     font-weight: 700;
@@ -94,4 +100,78 @@ header {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    row-gap: 10px;
+}
+h1 {
+    font-size: 100px;
+}
+h2 {
+    font-size: 50px;
+}
+
+#about {
+    grid-area: about;
+    background-color: #02353C;
+    display: grid;
+    grid-template-areas: "about_text about_img";
+    grid-template-columns: 1fr 1fr;
+    font-family: 'Raleway', sans-serif;
+}
+#about::before {
+    content: "";
+    position: absolute;
+    justify-self: center;
+    align-self: center;
+    width: 85vw;
+    height: 350px;
+    z-index: 1;
+    background: #008676;
+}
+#about::after {
+    content: "";
+    position: absolute;
+    justify-self: center;
+    align-self: center;
+    width: 80vw;
+    height: 250px;
+    z-index: 2;
+    background: #37CC90;
+}
+#about_title {
+    font-family: 'Cabin', sans-serif;
+    font-size: 45px;
+}
+#about_text {
+    grid-area: about_text;
+    margin-left: 15vw;
+    margin-right: 5vw;
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 20px;
+    z-index: 3;
+}
+#about_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
+#about_img {
+    grid-area: about_img;
+    margin-left: 5vw;
+    margin-right: 15vw;
+}
+
+#skills{
+    grid-area: skills;
+}
+
+#projects{
+    grid-area: projects;
+}
+
+#contact{
+    grid-area: contact;
 }
