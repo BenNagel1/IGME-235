@@ -52,7 +52,7 @@ table {
 body {
     display: grid;
     grid-template-areas: "nav" "header" "about" "skills" "projects" "contact";
-    grid-template-rows: 80px 450px 400px 600px 700px 400px;
+    grid-template-rows: 80px 450px 500px 600px 700px 300px;
     color: white;
 }
 
@@ -125,7 +125,7 @@ header {
     justify-self: center;
     align-self: center;
     width: 85vw;
-    height: 350px;
+    height: 450px;
     z-index: 1;
     background: #008676;
 }
@@ -135,7 +135,7 @@ header {
     justify-self: center;
     align-self: center;
     width: 80vw;
-    height: 275px;
+    height: 350px;
     z-index: 2;
     background: #37CC90;
 }
