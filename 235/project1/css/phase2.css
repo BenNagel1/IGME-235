@@ -56,19 +56,44 @@ body {
     color: white;
 }
 
-nav {
-    grid-area: nav;
-    display: grid;
-    grid-template-areas: "name navigation";
-    grid-template-columns: 1fr 2fr;
-    font-family: 'Palanquin Dark', sans-serif;
-    font-weight: 500;
-    background-color: #02353C;
-    height: 80px;
-    /*border: 5px solid black;*/
-    position: fixed;
-    width: 100vw;
-    z-index: 100;
+@media screen and (max-width: 760px){
+    body {
+        display: grid;
+        grid-template-areas: "nav" "header" "about" "skills" "projects" "contact";
+        grid-template-rows: 80px 450px 500px 600px 700px 300px;
+        color: white;
+    }
+    nav {
+        grid-area: nav;
+        display: grid;
+        grid-template-areas: "name dropdown";
+        grid-template-columns: 1fr 2fr;
+        font-family: 'Palanquin Dark', sans-serif;
+        font-weight: 500;
+        background-color: #02353C;
+        height: 80px;
+        /*border: 5px solid black;*/
+        position: fixed;
+        width: 100vw;
+        z-index: 100;
+    }
+}
+
+@media screen and (min-width: 760px){
+    nav {
+        grid-area: nav;
+        display: grid;
+        grid-template-areas: "name navigation";
+        grid-template-columns: 1fr 2fr;
+        font-family: 'Palanquin Dark', sans-serif;
+        font-weight: 500;
+        background-color: #02353C;
+        height: 80px;
+        /*border: 5px solid black;*/
+        position: fixed;
+        width: 100vw;
+        z-index: 100;
+    }
 }
 #nav_name {
     grid-area: name;
@@ -83,6 +108,18 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     grid-area: navigation;
+    font-size: 30px;
+    margin-left: 15vw;
+    margin-right: 5vw;
+    column-gap: 15px;
+    /*border: 5px solid white;*/
+    align-items: center;
+}
+#nav_dropdown { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    grid-area: dropdown;
     font-size: 30px;
     margin-left: 15vw;
     margin-right: 5vw;
@@ -281,20 +318,25 @@ a:active {
 a.options:link
 {
     color: white;
+    text-decoration: none;
 }
 a.options:visited
 {
     color: white;
+    text-decoration: none;
 }
 a.options:focus
 {
     color: white;
+    text-decoration: underline;
 }
 a.options:hover {
     color: white;
+    text-decoration: underline;
 }
 a.options:active {
     color: white;
+    text-decoration: underline;
 }
 
 a.header:link
@@ -308,6 +350,7 @@ a.header:visited
 a.header:focus
 {
     color: white;
+
 }
 a.header:hover {
     color: white;
