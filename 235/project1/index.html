@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phase 2</title>
-    <link rel="stylesheet" href="css/phase2.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hind&family=Palanquin+Dark:wght@500;700&display=swap" rel="stylesheet">
@@ -14,12 +15,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/phase2.css">
 </head>
 <body>
     <nav>
         <h3 id="nav_name"><a href="#header" class="header">Ben Nagel</a></h3>
         <h4 id="nav_options"><a href="#about" class="options">About</a><a href="#skills" class="options">Skills</a><a href="#projects" class="options">Projects</a><a href="#contact" class="options">Contact</a></h4>
-        <h4 id="nav_dropdown"><a href="#about" class="options">TEST</a></h4>
+        <div class="menu" id="menu_dropdown"><i class="fa fa-bars"></i>
+            <h4 id="menu_options"><a href="#about" class="options">About</a><a href="#skills" class="options">Skills</a><a href="#projects" class="options">Projects</a><a href="#contact" class="options">Contact</a></h4>
+        </div>
     </nav>
     <header id="header">
         <h1 id="header_name">Ben Nagel</h1>
@@ -35,7 +39,7 @@
             </p>    
         </div>
         <div id="about_container">
-            <img src="https://placehold.co/300x300" alt="placehold" id="about_img">
+            <img src="images/IMG_2237.png" alt="Portrait image of Ben Nagel" id="about_img">
         </div>
     </div>
     <div id="skills">
@@ -48,8 +52,11 @@
             <img src="images/JavaScript-Logo.png" alt="javascript logo" height="150px">
         </div>
         <h5 id="tools">Tools:</h5>
-        <div id="tool_images">
-            <img src="https://placehold.co/600x150" alt="placehold" id="tools_img">
+        <div id="tools_images">
+            <img src="images/tu3gt6ysfxq71.png" alt="unity logo" height="150px">
+            <img src="images/Visual_Studio_Icon_2019.svg.png" alt="visual studio logo" height="150px">
+            <img src="images/Adobe_Photoshop_CC_icon.svg.png" alt="photoshop logo" height="150px">
+            <img src="images/DaVinci_Resolve_Studio.png" alt="davinci resolve logo" height="150px">
         </div>
     </div>
     <div id="projects">
@@ -59,8 +66,6 @@
             I personally developed the architecture and various quality-of-life aspects such as player movement, collision, camera, finite state machine, and plenty of smaller features.
             This is my first full game that I have created and I have only grown my skills since.
         </p>
-        <br>
-        <p>want to add a way to click through projects*</p>
     </div>
     <div id="contact">
         <h5 id="contact_title">Contacts:</h5>
