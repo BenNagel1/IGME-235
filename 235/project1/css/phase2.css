@@ -155,7 +155,7 @@ header {
     margin-left: 15vw;
     margin-right: 2vw;
     display: flex;
-    align-items: left;
+    text-align: left;
     justify-content: center;
     flex-direction: column;
     row-gap: 10px;
@@ -268,7 +268,7 @@ header {
     margin-top: 35px;
     margin-left: 35px;
     margin-right: 35px;
-    text-wrap: balance;
+    word-break: keep-all;
 }
 
 
@@ -368,7 +368,7 @@ a.header:active {
         right: 0px;
         background-color: #02353C;
         padding: 5px;
-        overflow: overlay;
+        overflow: auto;
         row-gap: 10px;
     }
     nav {
@@ -421,7 +421,7 @@ a.header:active {
         grid-area: about_text;
         font-size: 18px;
         display: flex;
-        align-items: left;
+        text-align: left;
         justify-content: center;
         flex-direction: column;
         row-gap: 10px;
