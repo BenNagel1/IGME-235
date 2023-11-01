@@ -10,13 +10,42 @@
     <link rel="stylesheet" href="random-phrases-CSS.css">
 </head>
 <body>
-    <h1>Random Inspirational Quote Generator</h1>
+    <div id="title">
+        <h1>Random Inspirational Quote Generator</h1>
+    </div>
 
-    <!--image-->
+    <div id="image-container">
+        <img src="images/background-random.jpg" alt="man standing on a mountain majestically">
 
-    <h2>**random quote**</h2>
+        <div id="quote-container">
+            <h2 id="random-quote">**random quote**</h2>
+        </div>
+    </div>
 
+    <div id="button-container">
+        <button class="button-62" role="button" onclick="generateRandomQuote()">Generate Random Quote</button>
+    </div>
 
-    <footer>Ben Nagel</footer>
+    <div id="footing">
+        <h3>Quotes provided by Inspirobot</h3>
+        <footer>Website by Ben Nagel</footer>
+    </div>
+
+    <script>
+        const quotes = ["Let yourself be guided by the ancient religious folk wisdom: The internet is unsustainable.",
+        "Do not forget that you must object to your smile.",
+        "Remember to say to yourself: 'my being has meaning'.",
+        "Keep on breathing and remember this old proverb: The work must not be greater than the crime.",
+        "Keep repeating to yourself: 'I'm so mindful, I'm so mindful, I'm so mindful.'",
+        "Consider how before reality, comes the yelling.",
+        "Repeat the mantra: 'awareness of own mortality does not affect me, awareness of own mortality does not affect me.'",
+        "Think about how your sense of self is annihilating the world around you."];
+
+        function generateRandomQuote(){
+            document.getElementById("random-quote").innerHTML = quotes[Math.floor(Math.random() * quotes.length)];
+        }
+        
+        generateRandomQuote();
+    </script>
 </body>
 </html>

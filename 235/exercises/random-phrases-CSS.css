@@ -1,3 +1,136 @@
-h2{
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/*ACTUAL CSS BELOW*/
+
+body {
+    display: grid;
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#title{
+    display: grid;
+    justify-content: center;
+    text-align: center;
+}
+
+h1 {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    font-size: 30px;
+    margin: 20px;
+    width: 80vw;
+}
+
+#quote-container{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+}
+
+#random-quote {
     font-family: 'Playfair Display', serif;
+    width: 400px;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+}
+
+#image-container {
+    display: grid;
+    justify-content: center;
+    position: relative;
+}
+
+@media screen and (max-width: 650px){
+    img {
+        width: 80vw;
+    }
+}
+
+img {
+    z-index: -1;
+}
+
+#footing{
+    display: grid;
+    justify-content: center;
+    text-align: center;
+}
+
+h3{
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+footer{
+    margin-top: 5px;
+}
+
+
+#button-container{
+    display: grid;
+    justify-content: center;
+    text-align: center;
+}
+
+.button-62 {
+  background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+  border: 0;
+  border-radius: 12px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  width: 300px;
+  margin-top: 10px;
+}
+
+.button-62:not([disabled]):focus {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+.button-62:not([disabled]):hover {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
 }
