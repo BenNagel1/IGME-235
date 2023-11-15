@@ -8,7 +8,7 @@
 </head>
 <body>
 <header>
-	<h1>Giphy Finder</h1>
+	<h1>Flag Finder</h1>
 </header>
 
 <div id="widget-container">
@@ -17,17 +17,20 @@
 	</div>
 
 	<div class="widgets">
-		<select id="limit">
-			<option value="5">5</option>
-			<option value="10" selected>10</option>
-			<option value="25">25</option>
-			<option value="50">50</option>
-			<option value="100">100</option>
-		</select>
+		<div id="selections">
+			<select id="search-type">
+				<option value="0" selected>Country</option>
+				<option value="1">Capital</option>
+			</select>
+			<select id="alphabetically" onchange="alphabeticallyChange()">
+				<option value="0" selected>A &#8594; Z</option>
+				<option value="1">Z &#8594; A</option>
+			</select>
+		</div>
 	</div>
 
 	<div class="widgets">
-		<button type="button" id="search" class="green">Find some GIFs!<br />:-)</button>
+		<button type="button" id="search" class="green">Find some flags!</button>
 	</div>
 </div>
 
@@ -36,7 +39,9 @@
 
 <h2>Results</h2>
 <p id="result-count">No data yet!</p>
+<div id="content-container">
 <div id="content"></div>
+</div>
  
 
 </body>

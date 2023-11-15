@@ -1,10 +1,10 @@
-// 1
 window.onload = (e) => {document.querySelector("#search").onclick = searchButtonClicked};
 	
-// 2
 let displayTerm = "";
 
-// 3
+let alphabetically = "true";
+let country = "true";
+
 function searchButtonClicked(){
     console.log("searchButtonClicked() called");
     
@@ -51,6 +51,21 @@ function dataLoaded(e){
 
     let full = "";
 
+    if(alphabetically == "true"){
+        results.sort(function(a, b) {
+            var textA = a.name.common.toUpperCase();
+            var textB = b.name.common.toUpperCase();
+            return textA.localeCompare(textB); //should return a value -1, 0, or 1 and sort accordingly
+        });
+    }
+    else{
+        results.sort(function(b, a) {
+            var textA = a.name.common.toUpperCase();
+            var textB = b.name.common.toUpperCase();
+            return textA.localeCompare(textB); //should return a value -1, 0, or 1 and sort accordingly
+        });
+    }
+    
     for(let i = 0; i < results.length; i++){
         let result = results[i];
 
@@ -70,4 +85,17 @@ function dataLoaded(e){
 
 function dataError(e){
     console.log("An error occurred");
+}
+
+function alphabeticallyChange(){
+    console.log("change detected");
+
+    const option = document.querySelector("#alphabetically").value;
+
+    if(option == 0)
+        alphabetically = "true";
+    if(option == 1)
+        alphabetically = "false";
+
+    searchButtonClicked();
 }

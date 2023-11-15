@@ -26,10 +26,13 @@
 
  #content {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust the values as needed */
+    grid-template-columns: repeat(auto-fit, 150px);
     justify-content: center;
+    align-items: center;
     text-align: center;
- }
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
  
  #status{
     font-style: italic;
@@ -52,8 +55,9 @@
     font-weight : bold;
     background-color: rgb(255, 255, 255);
     padding:5px;
-    margin-left:10px;
-    margin-bottom:10px;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .result img {
