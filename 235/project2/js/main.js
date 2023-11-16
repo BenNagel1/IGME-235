@@ -2,13 +2,18 @@ window.onload = (e) => {document.querySelector("#search").onclick = searchButton
 	
 let displayTerm = "";
 
-let alphabetically = "true";
-let country = "true";
+let alphabetically = true;
+let searchType = true;
 
 function searchButtonClicked(){
     console.log("searchButtonClicked() called");
     
-    const REST_URL = "https://restcountries.com/v3.1/name/";
+    let REST_URL = "";
+
+    if(searchType)
+        REST_URL = "https://restcountries.com/v3.1/name/";
+    else
+        REST_URL = "https://restcountries.com/v3.1/capital/";
 
     let url = REST_URL;
 
@@ -41,17 +46,25 @@ function dataLoaded(e){
     let xhr = e.target;
 
     let results = JSON.parse(xhr.responseText);
+    
 
-    console.log(results);
-    console.log(results[0].name.official);
+    //console.log(results);
+    //console.log(results[0].name.official);
 
     let title = "<p><i>Here are " + results.length + " results for '" + displayTerm + "'</i></p>";
 
     document.querySelector("#result-count").innerHTML = title;
 
+    if(!results.length || results.length == 0){
+        document.querySelector("#status").innerHTML = "<b>No results found for '" + displayTerm + "'</b>"
+        document.querySelector("#result-count").innerHTML = "There are no results for the term you searched!";
+        document.querySelector("#content").innerHTML = "";
+        return;
+    }
+
     let full = "";
 
-    if(alphabetically == "true"){
+    if(alphabetically){
         results.sort(function(a, b) {
             var textA = a.name.common.toUpperCase();
             var textB = b.name.common.toUpperCase();
@@ -74,8 +87,13 @@ function dataLoaded(e){
         if (!smallURL) 
             smallURL = "images/no-image-found.png";
 
-        let line = `<div class='result'><img src='${smallURL}' title='${result.name.common}'>`;
-        line += result.name.common + '</div>';
+        let line = `<div class='result'><div id="image"><img src='${smallURL}' title='${result.name.common}'></div>`;
+        line += `<div id="common"><b><u>${result.name.common}</u></b></div>` + '<br>';
+
+        if(result.capital != null)
+            line += result.capital + '</div>';
+        else
+            line += '</div>';
         
         full += line;
     }
@@ -88,14 +106,27 @@ function dataError(e){
 }
 
 function alphabeticallyChange(){
-    console.log("change detected");
+    console.log("alphabetically change detected");
 
     const option = document.querySelector("#alphabetically").value;
 
     if(option == 0)
-        alphabetically = "true";
+        alphabetically = true;
     if(option == 1)
-        alphabetically = "false";
+        alphabetically = false;
+
+    searchButtonClicked();
+}
+
+function searchTypeChange(){
+    console.log("searchType change detected");
+
+    const option = document.querySelector("#search-type").value;
+
+    if(option == 0)
+        searchType = true;
+    if(option == 1)
+        searchType = false;
 
     searchButtonClicked();
 }

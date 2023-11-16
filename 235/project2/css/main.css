@@ -45,14 +45,13 @@
  .result {
     position: relative;
     height: 175px;
-    width: 100px;
+    width: 125px;
     display: inline-block;
     border-style : solid;
     border-width : 1px;
     border-radius: 3px;
     box-shadow : 0 1px 4px rgba(0,0,0,.6);
     font-size : 9.5pt;
-    font-weight : bold;
     background-color: rgb(255, 255, 255);
     padding:5px;
     margin: auto;
@@ -62,16 +61,25 @@
 
 .result img {
     position: absolute;
-    left: 5px;
-    bottom: 5px;
     top: 100px;
     display:block;
-    width: 100px;
+    max-width: 100px;
+    max-height: 70px;
+}
+
+#image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#common{
+    margin-bottom: -10px;
+    margin-top: 5px;
 }
 
 .result span{
     font-size:12px;
-    font-weight:bold;
     display:block;
 }
 
