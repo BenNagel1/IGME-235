@@ -5,6 +5,19 @@ let displayTerm = "";
 let alphabetically = true;
 let searchType = true;
 
+const prefix = "ban8083-";
+const searchKey = prefix + "search";
+const storedSearch = localStorage.getItem(searchKey);
+
+document.addEventListener("DOMContentLoaded", function () {
+    if (storedSearch){
+        document.querySelector("#searchterm").value = storedSearch;
+        searchButtonClicked();
+    } else {
+        document.querySelector("#searchterm").value = "USA";
+    }
+});
+
 function searchButtonClicked(){
     console.log("searchButtonClicked() called");
     
@@ -18,6 +31,9 @@ function searchButtonClicked(){
     let url = REST_URL;
 
     let term = document.querySelector("#searchterm").value;
+
+    localStorage.setItem(searchKey, term);
+
     displayTerm = term;
 
     term = term.trim();
@@ -46,12 +62,8 @@ function dataLoaded(e){
     let xhr = e.target;
 
     let results = JSON.parse(xhr.responseText);
-    
 
-    //console.log(results);
-    //console.log(results[0].name.official);
-
-    let title = "<p><i>Here are " + results.length + " results for '" + displayTerm + "'</i></p>";
+    let title = "<p><i>Displaying " + results.length + " result(s) for '" + displayTerm + "'</i></p>";
 
     document.querySelector("#result-count").innerHTML = title;
 
@@ -68,14 +80,14 @@ function dataLoaded(e){
         results.sort(function(a, b) {
             var textA = a.name.common.toUpperCase();
             var textB = b.name.common.toUpperCase();
-            return textA.localeCompare(textB); //should return a value -1, 0, or 1 and sort accordingly
+            return textA.localeCompare(textB);
         });
     }
     else{
         results.sort(function(b, a) {
             var textA = a.name.common.toUpperCase();
             var textB = b.name.common.toUpperCase();
-            return textA.localeCompare(textB); //should return a value -1, 0, or 1 and sort accordingly
+            return textA.localeCompare(textB);
         });
     }
     
