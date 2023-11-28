@@ -1,5 +1,11 @@
 *{
     font-family:verdana,tahoma,sans-serif;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+body{
+    background-color: #F6F4F6;
 }
 
  header{
@@ -8,10 +14,17 @@
  
  header h1{
      margin:0;
-     color:black;
+     color:rgb(255, 255, 255);
+     text-shadow: black 2px 2px 10px;
      text-align:center;
      font-size:100px;
      padding-top: 35px;
+ }
+
+ #header-container{
+    background-image: url("images/worldmap.avif");
+    background-size: contain;
+    background-position-x: center;
  }
 
  h2 {
@@ -87,6 +100,19 @@
     width: 130px;
 }
 
+#searchterm{
+    display : inline-block;
+    border: 1px solid black;
+    border-style : solid;
+    border-width : 1px;
+    border-radius : 10px;
+    padding : 10px 18px;
+    box-shadow : 0 1px 4px rgba(0,0,0,.6);
+    font-size : 16pt;
+    color : #000000;
+    font-family : sans-serif;
+}
+
 button{
   display : inline-block;
   cursor : pointer;
@@ -105,17 +131,16 @@ button{
 }
 
 button.green{
-    border-color: #8fc800;
-      background: #8fc800;
-      background: linear-gradient(top, #8fc800 0%,#438c00 100%);
+    border-color: #279ac4;
+    background: #279ac4;
 }
 
 button:hover{
-    background: #8fDD00;
+    background: rgb(60, 188, 234);
 }
 
 button:active{
-    background: #8fFF00;
+    background: rgb(60, 188, 234);
     box-shadow : 0 0 6px rgba(0,0,0,.6);
 }
 
@@ -129,7 +154,7 @@ button:focus {outline:0;}
 }
 
 #widget-container {
-    width: 250px;
+    width: 300px;
     margin: 0 auto;
     border-style : solid;
     border-width : 1px;
@@ -139,4 +164,18 @@ button:focus {outline:0;}
     font-size : 9.5pt;
     font-weight : bold;
     background-color: rgb(220, 220, 220);
+}
+
+select{
+    padding: 7px 5px 7px 12px;
+    width: 125px;
+    border: 1px solid #E8EAED;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 1px 3px -2px #9098A9;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 16px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
