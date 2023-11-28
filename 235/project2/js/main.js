@@ -1,3 +1,4 @@
+//sets onclick of the search button
 window.onload = (e) => {document.querySelector("#search").onclick = searchButtonClicked};
 	
 let displayTerm = "";
@@ -6,16 +7,43 @@ let alphabetically = true;
 let searchType = true;
 
 const prefix = "ban8083-";
+
 const searchKey = prefix + "search";
 const storedSearch = localStorage.getItem(searchKey);
 
+const typeKey = prefix + "type";
+const storedType = localStorage.getItem(typeKey);
+
+const alphaKey = prefix + "alphabetically";
+const storedAlpha = localStorage.getItem(alphaKey);
+
+//sets the local storage search term
 document.addEventListener("DOMContentLoaded", function () {
     if (storedSearch){
         document.querySelector("#searchterm").value = storedSearch;
-        searchButtonClicked();
     } else {
         document.querySelector("#searchterm").value = "USA";
     }
+
+    if (storedType){
+        console.log(storedType);
+        document.querySelector("#search-type").value = storedType ? 0 : 1;
+        searchType = storedType;
+        console.log(searchType);
+    } else {
+        searchType = true;
+        document.querySelector("#search-type").value = 0;
+    }
+
+    if (storedAlpha){
+        document.querySelector("#alphabetically").value = storedAlpha ? 0 : 1;
+        alphabetically = storedAlpha;
+    } else {
+        alphabetically = true;
+        document.querySelector("#alphabetically").value = 0;
+    }
+
+    searchButtonClicked();
 });
 
 function searchButtonClicked(){
@@ -23,6 +51,7 @@ function searchButtonClicked(){
     
     let REST_URL = "";
 
+    //checks if the name or capital is being searched
     if(searchType)
         REST_URL = "https://restcountries.com/v3.1/name/";
     else
@@ -32,6 +61,7 @@ function searchButtonClicked(){
 
     let term = document.querySelector("#searchterm").value;
 
+    //sets local storage
     localStorage.setItem(searchKey, term);
 
     displayTerm = term;
@@ -67,6 +97,7 @@ function dataLoaded(e){
 
     document.querySelector("#result-count").innerHTML = title;
 
+    //tells user if the search is invalid
     if(!results.length || results.length == 0){
         document.querySelector("#status").innerHTML = "<b>No results found for '" + displayTerm + "'</b>"
         document.querySelector("#result-count").innerHTML = "There are no results for the term you searched!";
@@ -76,21 +107,41 @@ function dataLoaded(e){
 
     let full = "";
 
+    //sorts alphabetically depending on the direction set
     if(alphabetically){
-        results.sort(function(a, b) {
-            var textA = a.name.common.toUpperCase();
-            var textB = b.name.common.toUpperCase();
-            return textA.localeCompare(textB);
-        });
+        if(searchType){
+            results.sort(function(a, b) {
+                var textA = a.name.common.toUpperCase();
+                var textB = b.name.common.toUpperCase();
+                return textA.localeCompare(textB);
+            });
+        }
+        else{
+            results.sort(function(a, b) {
+                var textA = a.capital[0].toUpperCase();
+                var textB = b.capital[0].toUpperCase();
+                return textA.localeCompare(textB);
+            });
+        }        
     }
     else{
-        results.sort(function(b, a) {
-            var textA = a.name.common.toUpperCase();
-            var textB = b.name.common.toUpperCase();
-            return textA.localeCompare(textB);
-        });
+        if(searchType){
+            results.sort(function(b, a) {
+                var textA = a.name.common.toUpperCase();
+                var textB = b.name.common.toUpperCase();
+                return textA.localeCompare(textB);
+            });
+        }
+        else{
+            results.sort(function(b, a) {
+                var textA = a.capital[0].toUpperCase();
+                var textB = b.capital[0].toUpperCase();
+                return textA.localeCompare(textB);
+            });
+        }
     }
     
+    //creates each box based on search results
     for(let i = 0; i < results.length; i++){
         let result = results[i];
 
@@ -100,10 +151,22 @@ function dataLoaded(e){
             smallURL = "images/no-image-found.png";
 
         let line = `<div class='result'><div id="image"><img src='${smallURL}' title='${result.name.common}'></div>`;
-        line += `<div id="common"><b><u>${result.name.common}</u></b></div>` + '<br>';
+        
+        if(searchType){
+            line += `<div id="common"><b><u>${result.name.common}</u></b></div>` + '<br>';
+        }
+        else{
+            line += `<div id="common">${result.name.common}</div>` + '<br>';
+        }
+        
 
         if(result.capital != null)
-            line += result.capital + '</div>';
+            if(searchType){
+                line += result.capital + '</div>';
+            }
+            else{
+                line += "<b><u>" + result.capital + '</u></b></div>';
+            }
         else
             line += '</div>';
         
@@ -127,6 +190,8 @@ function alphabeticallyChange(){
     if(option == 1)
         alphabetically = false;
 
+    localStorage.setItem(alphaKey, alphabetically);
+
     searchButtonClicked();
 }
 
@@ -139,6 +204,8 @@ function searchTypeChange(){
         searchType = true;
     if(option == 1)
         searchType = false;
+
+    localStorage.setItem(typeKey, searchType);
 
     searchButtonClicked();
 }
