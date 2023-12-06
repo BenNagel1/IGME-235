@@ -3,17 +3,19 @@ window.onload = (e) => {document.querySelector("#search").onclick = searchButton
 	
 let displayTerm = "";
 
+//control selections
 let alphabetically = true;
 let searchType = true;
 
 const prefix = "ban8083-";
 
+//local storage consts
 const searchKey = prefix + "search";
 const storedSearch = localStorage.getItem(searchKey);
-
+//
 const typeKey = prefix + "type";
 const storedType = localStorage.getItem(typeKey);
-
+//
 const alphaKey = prefix + "alphabetically";
 const storedAlpha = localStorage.getItem(alphaKey);
 
@@ -25,19 +27,24 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#searchterm").value = "USA";
     }
 
-    if (storedType){
-        console.log(storedType);
-        document.querySelector("#search-type").value = storedType ? 0 : 1;
-        searchType = storedType;
-        console.log(searchType);
+    //stored info as ints due to issues with booleans. converted from ints to booleans.
+    if (storedType != null){
+        document.querySelector("#search-type").value = storedType;
+        if(storedType == 0)
+            searchType = true;
+        else
+            searchType = false;
     } else {
         searchType = true;
         document.querySelector("#search-type").value = 0;
     }
 
     if (storedAlpha){
-        document.querySelector("#alphabetically").value = storedAlpha ? 0 : 1;
-        alphabetically = storedAlpha;
+        document.querySelector("#alphabetically").value = storedAlpha;
+        if(storedAlpha == 0)
+            alphabetically = true;
+        else
+            alphabetically = false;
     } else {
         alphabetically = true;
         document.querySelector("#alphabetically").value = 0;
@@ -73,8 +80,6 @@ function searchButtonClicked(){
     if(term.length < 1) return;
         url += term;
 
-    document.querySelector("#status").innerHTML = "<b> Searching for '" + displayTerm + "' </b>";
-
     console.log(url);
 
     getData(url);
@@ -99,7 +104,6 @@ function dataLoaded(e){
 
     //tells user if the search is invalid
     if(!results.length || results.length == 0){
-        document.querySelector("#status").innerHTML = "<b>No results found for '" + displayTerm + "'</b>"
         document.querySelector("#result-count").innerHTML = "There are no results for the term you searched!";
         document.querySelector("#content").innerHTML = "";
         return;
@@ -107,7 +111,7 @@ function dataLoaded(e){
 
     let full = "";
 
-    //sorts alphabetically depending on the direction set
+    //sorts alphabetically depending on the direction set and whether its by country name or capital
     if(alphabetically){
         if(searchType){
             results.sort(function(a, b) {
@@ -180,6 +184,7 @@ function dataError(e){
     console.log("An error occurred");
 }
 
+//detects a change in the alphabetical sort type
 function alphabeticallyChange(){
     console.log("alphabetically change detected");
 
@@ -190,11 +195,12 @@ function alphabeticallyChange(){
     if(option == 1)
         alphabetically = false;
 
-    localStorage.setItem(alphaKey, alphabetically);
+    localStorage.setItem(alphaKey, option);
 
     searchButtonClicked();
 }
 
+//detects a change in the search sort type
 function searchTypeChange(){
     console.log("searchType change detected");
 
@@ -205,7 +211,7 @@ function searchTypeChange(){
     if(option == 1)
         searchType = false;
 
-    localStorage.setItem(typeKey, searchType);
+    localStorage.setItem(typeKey, option);
 
     searchButtonClicked();
 }
