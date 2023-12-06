@@ -26,9 +26,21 @@
             ball.setBounce(0.2);
             ball.setCollideWorldBounds(true);
 
-            const wallLeft = this.physics.add.sprite(grass1.x - grass1.width/2, windowHeight / 2, 'wall').setImmovable(true);
+            const wallLeft = this.physics.add.sprite(grass1.x - grass1.width/2, grass1.y, 'wall').setImmovable(true);
             wallLeft.setScale(.25, 4);
             this.physics.add.collider(ball, wallLeft);
+
+            const wallRight = this.physics.add.sprite(grass1.x + grass1.width/2, grass1.y, 'wall').setImmovable(true);
+            wallRight.setScale(.25, 4);
+            this.physics.add.collider(ball, wallRight);
+
+            const wallUp = this.physics.add.sprite(grass1.x, grass1.y - grass1.height/2, 'wall').setImmovable(true);
+            wallUp.setScale(2.25, .25);
+            this.physics.add.collider(ball, wallUp);
+
+            const wallDown = this.physics.add.sprite(grass1.x, grass1.y + grass1.height/2, 'wall').setImmovable(true);
+            wallDown.setScale(2.25, .25);
+            this.physics.add.collider(ball, wallDown);
 
 
             this.input.mouse.disableContextMenu();
