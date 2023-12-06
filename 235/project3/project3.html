@@ -1,15 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser-arcade-physics.min.js"></script>
 </head>
 <body>
-    <h1>Mini-Golf</h1>
 
-    <!--game-->
+    <script>
+    class Example extends Phaser.Scene
+    {
+        preload ()
+        {
+            this.load.image('ball', 'images/ball.png');
+            this.load.image('grass1', 'images/grass1.png');
+            this.load.image('wall', 'images/wall.png');
+        }
 
-    <h2>Controls:</h2>
+        create ()
+        {
+            const windowWidth = game.config.width;
+            const windowHeight = game.config.height;
+
+            const grass1 = this.physics.add.sprite(windowWidth / 2, windowHeight / 2, 'grass1');
+            
+            let ball = this.physics.add.sprite(windowWidth / 2, 400, 'ball');
+            ball.setBounce(0.2);
+            ball.setCollideWorldBounds(true);
+
+            const wallLeft = this.physics.add.sprite(grass1.x - grass1.width/2, windowHeight / 2, 'wall').setImmovable(true);
+            wallLeft.setScale(.25, 4);
+            this.physics.add.collider(ball, wallLeft);
+
+
+            this.input.mouse.disableContextMenu();
+
+            this.input.on('pointerdown', function (pointer)
+            {
+                if (pointer.leftButtonDown())
+                {
+                    ball.setVelocity(pointer.x - ball.x, pointer.y - ball.y);
+                }
+            }, this);
+        }
+    }
+
+    const config = {
+        type: Phaser.AUTO,
+        width: 800,
+        height: 600,
+        scene: Example,
+        physics: {
+            default: 'arcade',
+            arcade: {
+                gravity: { y: 0 }
+            }
+        }
+    };
+
+    const game = new Phaser.Game(config);
+    </script>
+
 </body>
 </html>
