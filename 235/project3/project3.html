@@ -3,29 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
-</head>
-<body>
-
-<!DOCTYPE html>
-<html>
-<head>
+    <title>Mini-Golf</title>
     <link rel="stylesheet" href="css/main.css"/>
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser-arcade-physics.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/levelManager.js"></script>
 </head>
 <body>
-</body>
-</html>
     <h1 id="title">Mini-Golf</h1>
 
     <!--Canvas-->
 
-    <h2 id="controls">Controls:</h2>
-    <ul>
-        <li>Move Mouse: Turns golf club towards mouse position</li>
-        <li>Left Click: First click sets club position, then the second click hits the ball at a power based on how far away the mouse has moved from the original position</li>
-        <li>Right Click: Ends the locked club position and returns the player to aiming the club</li>
-    </ul>
+    <div id="description">
+        <h2 id="controls">Controls:</h2>
+        <ul>
+            <li>Move Mouse: Turns your golf club opposite of the mouse position (the ball will travel AWAY from your mouse). The further away your cursor is, the more power you get.</li>
+            <li>Left Click: Hits the ball in the direction and power specified. You may only hit your ball once it has come to a complete stop. The opacity of the club displays this.</li>
+        </ul>
+    
+        <h2 id="gameplay">Gameplay:</h2>
+            <p>Use your mouse and left click to get the ball in the hole in as little hits as possible. 
+            There are 5 levels total and your goal is to make it through them with a score under par.</p>
+        <ul>
+            <li>Light Green = Normal grass that will not affect your ball in any way.</li>
+            <li>Dark Green = Rough grass that will slow down your ball.</li>
+            <li>Blue = Ice that will stop your ball from slowing down. Make sure to aim properly before going over ice as it you won't be able to stop on it!</li>
+            <li>Brown = Walls that you can not pass through and will bounce off of.</li>
+        </ul>
+    </div>
 </body>
 </html>

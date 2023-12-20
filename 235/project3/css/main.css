@@ -1,12 +1,21 @@
 * {
     font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+    text-shadow: -1px 1px 0 #000, 
+                1px 1px 0 #000, 
+                1px -1px 0 #000, 
+                -1px -1px 0 #000;
 }
 
 body{
     display: grid;
-    grid-template-areas: "title" "canvas" "controls";
+    grid-template-areas: "title" "canvas" "description";
     grid-template-columns: auto;
     grid-template-rows: auto auto auto;
+
+    background-image: url('../images/background.jpg');
+    background-size: 300px;
+    background-repeat: repeat;
 }
 
 #title {
@@ -15,6 +24,12 @@ body{
     justify-content: center;
     font-size: 50px;
     font-weight: bold;
+    background-color: rgba(50, 50, 50, 0.5);
+    padding: 20px;
+    max-width: 80%;
+    margin: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
 }
 
 canvas {
@@ -23,6 +38,10 @@ canvas {
     margin : auto;
 }
 
-#controls {
-    grid-area: controls;
+#description{
+    grid-area: description;
+    background-color: rgba(50, 50, 50, 0.5);
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
 }
